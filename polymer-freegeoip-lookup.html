@@ -1,0 +1,71 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-ajax/iron-request.html">
+
+<dom-module id="freegeoip-lookup">
+  <template>
+    <span>{{result}}</span>
+  </template>
+</dom-module>
+<script>
+
+  Polymer({
+
+    is: 'freegeoip-lookup',
+
+    properties: {
+
+      'response': {
+        type: Object,
+        notify: true
+      },
+
+      'disableAutoload': {
+        type: Boolean,
+        notify: true
+      },
+
+      'url': {
+        type: String,
+        value: 'https://freegeoip.net/json/'
+      },
+
+      'loading': {
+        type: Boolean,
+        value: false,
+        notify: true
+      }
+
+    },
+
+    attached: function() {
+
+      var self = this;
+
+      this.xhr = document.createElement('iron-request');
+      this.xhr.completes.then(function (request) {
+        self.setAttribute('response', request.response);
+        self.setAttribute('loading', false);
+      }).catch(function (e) {
+        self.setAttribute('response', null);
+        self.setAttribute('loading', false);
+      });
+
+      if(!this.disableAutoload) {
+        this.lookup();
+      }
+
+    },
+
+    lookup: function() {
+
+      this.setAttribute('loading', true);
+      this.xhr.send({
+        url: this.url,
+        handleAs: 'text'
+      });
+
+    }
+
+  });
+
+</script>

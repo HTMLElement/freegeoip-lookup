@@ -1,0 +1,32 @@
+{
+  "name": "polymer-freegeoip-lookup",
+  "version": "0.1.0",
+  "description": "Polymer element for client geolocation lookup with freegeoip.net",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "web-component-tester": "git://github.com/polymer/web-component-tester.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./node_modules/web-component-tester/bin/wct"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gronke/polymer-freegeoip-lookup.git"
+  },
+  "keywords": [
+    "polymer",
+    "quantize",
+    "convert"
+  ],
+  "author": "Stefan Grönke <stefan@gronke.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gronke/polymer-freegeoip-lookup/issues"
+  },
+  "homepage": "https://github.com/gronke/polymer-freegeoip-lookup"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "polymer-freegeoip-lookup",
+  "version": "0.0.1",
+  "dependencies": {
+    "polymer": "~1.0.8",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.4"
+  },
+  "devDependencies": {
+    "test-fixture": "polymerelements/test-fixture#^1.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#~0.7.2",
+    "paper-styles": "PolymerElements/paper-styles",
+    "prism-element": "PolymerElements/prism-element",
+    "hydrolysis": "Polymer/hydrolysis",
+    "web-component-tester": "~3.2.0",
+    "marked-element": "PolymerElements/marked-element"
+  },
+  "homepage": "https://github.com/gronke/polymer-freegeoip-lookup/",
+  "license": "MIT"
+}

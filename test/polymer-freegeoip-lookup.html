@@ -1,0 +1,110 @@
+<!doctype html>
+<head>
+  <title>freegeoip-lookup</title>
+
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+  <link rel="import" href="../../polymer/polymer.html">
+  <link rel="import" href="../../test-fixture/test-fixture.html">
+  <link rel="import" href="../polymer-freegeoip-lookup.html">
+</head>
+<body>
+  <test-fixture id="FreegeoipLookupAuto">
+    <template>
+      <freegeoip-lookup></freegeoip-lookup>
+    </template>
+  </test-fixture>
+  <test-fixture id="FreegeoipLookupNoAuto">
+    <template>
+      <freegeoip-lookup disable-autoload></freegeoip-lookup>
+    </template>
+  </test-fixture>
+  <script>
+
+  var sampleData = {
+    "ip": "127.0.0.1",
+    "country_code": "COUNTRY_CODE",
+    "country_name": "COUNTRY_NAME",
+    "region_code": "REGION_CODE",
+    "region_name": "REGION_NAME",
+    "city": "CITY",
+    "zip_code": "ZIP_CODE",
+    "time_zone": "TIME_ZONE",
+    "latitude": 23,
+    "longitude": 42,
+    "metro_code": 0
+  };
+
+  suite('<freegeoip-lookup>', function() {
+
+    setup(function() {
+      server = sinon.fakeServer.create();
+      server.respondWith(
+        'GET',
+        /\/json\/?/,
+        [
+          200,
+          { 'Content-Type': 'application/json' },
+          JSON.stringify(sampleData)
+        ]
+      );
+    });
+
+    suite('with default uptions', function() {
+
+      var el;
+      setup(function () {
+        el = fixture('FreegeoipLookupAuto');
+      });
+
+      test('requests data when element is attached', function(done) {
+
+        server.respond();
+
+        el.addEventListener('response-changed', function(response) {
+          expect(response.detail.value).to.be.deep.equal(sampleData);
+          done();
+        });
+
+      });
+
+    });
+
+    suite('with disable-autoload set', function() {
+
+      var el;
+      setup(function () {
+        el = fixture('FreegeoipLookupNoAuto');
+      });
+
+      test('does not lookup when element is attached', function(done) {
+
+        expect(el.loading).to.be.equal(false);
+        done();
+
+      });
+
+      test('can be fired manually', function(done) {
+
+        el.addEventListener('response-changed', function(response) {
+          console.log(response);
+          expect(response.detail.value).to.be.deep.equal(sampleData);
+          done();
+        });
+
+        expect(el.loading).to.be.equal(false);
+        el.lookup();
+        expect(el.loading).to.be.equal(true);
+
+        server.respond();
+
+      });
+
+    });
+
+  });
+
+  </script>
+</body>
