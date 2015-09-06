@@ -1,5 +1,6 @@
 {
   "name": "polymer-freegeoip-lookup",
+  "description": "Polymer element for client geolocation lookup with freegeoip.net",
   "version": "0.0.1",
   "dependencies": {
     "polymer": "~1.0.8",
