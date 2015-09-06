@@ -1,7 +1,7 @@
 {
   "name": "polymer-freegeoip-lookup",
   "description": "Polymer element for client geolocation lookup with freegeoip.net",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "polymer": "~1.0.8",
     "iron-ajax": "PolymerElements/iron-ajax#~1.0.4"
@@ -16,5 +16,9 @@
     "marked-element": "PolymerElements/marked-element"
   },
   "homepage": "https://github.com/gronke/polymer-freegeoip-lookup/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gronke/polymer-freegeoip-lookup.git"
+  },
   "license": "MIT"
 }
