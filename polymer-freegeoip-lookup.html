@@ -50,10 +50,12 @@
         self.setAttribute('loading', false);
       });
 
+    },
+
+    attached: function() {
       if(!this.disableAutoload) {
         this.lookup();
       }
-
     },
 
     lookup: function() {
