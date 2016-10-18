@@ -2,15 +2,17 @@
 <link rel="import" href="../iron-ajax/iron-request.html">
 
 <dom-module id="freegeoip-lookup">
-  <template>
-    <span>{{result}}</span>
-  </template>
 </dom-module>
+
 <script>
 
   Polymer({
 
     is: 'freegeoip-lookup',
+
+    behaviors: [
+      Polymer.Templatizer
+    ],
 
     properties: {
 
@@ -32,7 +34,8 @@
       'loading': {
         type: Boolean,
         value: false,
-        notify: true
+        notify: true,
+        reflectToAttribute: true
       }
 
     },
@@ -43,11 +46,12 @@
 
       this.xhr = document.createElement('iron-request');
       this.xhr.completes.then(function (request) {
-        self.setAttribute('response', request.response);
-        self.setAttribute('loading', false);
+        const response = JSON.parse(request.response)
+        self.set('response', response);
+        self.set('loading', false);
       }).catch(function (e) {
-        self.setAttribute('response', null);
-        self.setAttribute('loading', false);
+        self.set('response', null);
+        self.set('loading', false);
       });
 
       if(!this.disableAutoload) {
