@@ -16,7 +16,7 @@ Demo
 ```
 <custom-element-demo>
   <template>
-    <link rel=”import” href=”polymer-freegeoip-lookup.html”>
+    <link rel=import href=polymer-freegeoip-lookup.html>
     <freegeoip-lookup>
       <div>
         <template is="dom-if" if="!response">
