@@ -1,7 +1,7 @@
 {
   "name": "polymer-freegeoip-lookup",
   "description": "Polymer element for client geolocation lookup with freegeoip.net",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "dependencies": {
     "polymer": "1.7.0",
     "iron-ajax": "1.4.3"

@@ -31,7 +31,7 @@ Demo
         <div>Looking up your location on freegeoip.net ...</div>
       </template>
       <template is="dom-if" if="{{ !loading }}">
-        <div>freeeoip.net thinks <a href$="http://www.google.com/maps/place/[[response.latitude]],[[response.longitude]]">your location</a> is:</div>
+        <div>freeeoip.net thinks <a href$="http://www.google.com/maps/place/[[response.latitude]],[[response.longitude]]" target="_blank">your location</a> is:</div>
         <div>Latitude: <span>[[response.latitude]]</span></div>
         <div>Longitude: <span>[[response.longitude]]</span></div>
       </template>
