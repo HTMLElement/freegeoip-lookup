@@ -36,6 +36,13 @@
         value: false,
         notify: true,
         reflectToAttribute: true
+      },
+
+      'error': {
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
       }
 
     },
@@ -49,7 +56,9 @@
         const response = JSON.parse(request.response)
         self.set('response', response);
         self.set('loading', false);
+        self.set('error', false);
       }).catch(function (e) {
+        self.set('error', true);
         self.set('response', null);
         self.set('loading', false);
       });
