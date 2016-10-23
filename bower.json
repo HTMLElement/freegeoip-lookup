@@ -20,5 +20,11 @@
     "type": "git",
     "url": "https://github.com/gronke/polymer-freegeoip-lookup.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "geo",
+    "location"
+  ]
 }
